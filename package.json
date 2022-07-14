@@ -1,0 +1,24 @@
+{
+  "name": "simple-ubereats-scraper",
+  "version": "1.0.0",
+  "description": "A simple node.js app to scrape ubereats menus ",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "puppeteer",
+    "ubereats-web-scraping",
+    "web-scraper"
+  ],
+  "author": "Khaled Azem",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "nodemon": "^2.0.19",
+    "puppeteer": "^15.4.0"
+  }
+}
