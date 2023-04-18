@@ -99,6 +99,15 @@ This is a simple Node.js app, using Express, for scraping a restaurant's menu.
 };
 ```
 
+#### in case wrong storeUuid is passed the response is
+
+```json
+{
+  "message": "invalid_store_uuid",
+  "code": "404"
+}
+```
+
 ## TODOs
 
 - [ ] automate testing.
