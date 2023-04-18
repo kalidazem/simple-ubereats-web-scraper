@@ -55,7 +55,7 @@ This is a simple Node.js app, using Express, for scraping a restaurant's menu.
 
 ### **POST** Get Menu -- Ubereats API (API endpoint was obtained by analyzing their network traffic)
 
-`http://localhost:3000/ubereats/get-menu`
+`http://localhost:3000/api-call/get-menu`
 
 #### Request body
 
