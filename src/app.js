@@ -1,24 +1,30 @@
-const express = require("express");
-const app = express();
-const router = express.Router();
+// External imports
+const express = require('express');
 
+const router = express.Router();
+const httpStatus = require('http-status');
+
+const app = express();
 app.use(express.json());
 
-const { getMenu } = require("./ubereats");
-router.post("/ubereats", async (req, res, next) => {
-  try {
-    const { url } = req.body;
-    let menu = await getMenu(url);
-    res.status(200).json(menu);
-  } catch (err) {
-    res.status(400).json({ msg: err.message });
-  }
-});
+// Internal imports
 
-router.use((req, res) => {
-  res.status(404).json({ msg: "route doesn't exist" });
+const ApiError = require('./utils/ApiError');
+const { errorConverter, errorHandler } = require('./middleware/errorConvertor');
+const { ubereats } = require('./ubereats');
+const { apiCall } = require('./reverse-engineered-api-call');
+
+router.use(ubereats.routes.baseUrl, ubereats.routes.router);
+router.use(apiCall.routes.baseUrl, apiCall.routes.router);
+
+router.use((req, res, next) => {
+  next(new ApiError(httpStatus.NOT_FOUND, 'Route does not exist'));
 });
 
 app.use(router);
+
+app.use(errorConverter);
+
+app.use(errorHandler);
 
 module.exports = app;
